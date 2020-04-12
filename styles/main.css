@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+}
+
+/*---------Font Family-------------*/
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Montserrat-Thin';
+    src: url("../fonts/Montserrat/Montserrat-Thin.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+
+/* BASICS */
+
+html {
+    color: white;
+    font-size: 1.1875rem;
+}
+
+body {
+    margin: 0;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+img {
+    object-fit: cover;
+}
+
+
+/* LAYOUT */
+
+.contain {
+    height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 100px;
+    width: 1000px;
+    background-color: #00a2ff;
+    border-radius: 0 0  10px  10px;
+
+}
+
+.logo {
+    width: 200px;
+    margin-inline-start: 30px;
+}
+
+.nav {
+    height: 100%;
+}
+
+
+.nav ul {
+    height: 100%;
+
+}
+
+.nav li {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+    font-family: Montserrat-Bold;
+    text-transform: uppercase;
+    text-shadow: 0 1px 1px #040a2c;
+}
+
+.nav li:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.search {
+    margin: 0 auto;
+    color: grey;
+}
+
+
+.gallery {
+    width: 100%;
+    color: grey;
+    text-align: center;
+}
+
+.gallery-images {
+    margin: 20px auto;
+    /* display: grid;
+    grid-template-columns: repeat(3, 250px);
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
+    gap: 30px; */
+    column-count: 4;
+    
+}
+
+.non-square-image {
+    /* grid-column: auto / span 1;
+    grid-row: auto / span 1;
+    object-fit: fill;
+    width: 250px;
+    height: 250px; */
+    cursor: pointer;
+
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid grey;
+    transition: 0.3s;
+    filter: brightness(80%);
+}
+.non-square-image:hover {
+    filter: brightness(120%);
+}
+
+
+.editor {
+    background-color: #e3e3e3;
+    color: grey;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px grey;
+}
+
+
+.control-box {
+    width: 373px;
+}
+
+footer {
+    width: 1000px;
+    background-color: #00a2ff;
+    border-radius: 10px  10px 0 0;
+    margin-top: 16px;
+    font-family: "Montserrat-Thin";
+}
+footer img {
+    margin: 15px; 
+}
+
+
+/*----------Edit Line Box------------*/
+
+.txt-input {
+    /* width: 373px;
+    height: 60px; */
+    /* border-radius: 12px; */
+    /* background-color: white; */
+    margin: 15px;
+}
+
+.edit-buttons {
+    display: block;
+    margin-bottom: 20px;
+    background: grey;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.style-buttons {
+    display: block;
+}
+
+/* --------HELPERS-------- */
+
+/* flex-helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.space-evenly {
+    justify-content: space-evenly;
+}
+
+.flex.justify-center {
+    justify-content: center;
+}
+
+.flex.space-around {
+    justify-content: space-around;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
+/* List helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
