@@ -36,9 +36,12 @@ function renderEditView() {
     const elGallery = document.querySelector('.gallery');
     elGallery.hidden = true;
     elGallery.classList.remove('flex');
+    document.querySelector('.search').hidden = true;
     const elMemeEditor = document.querySelector('.editor');
     elMemeEditor.hidden = false;
     elMemeEditor.classList.add('flex');
+    elMemeEditor.classList.add('wrap');
+    elMemeEditor.classList.add('space-between');
 }
 
 

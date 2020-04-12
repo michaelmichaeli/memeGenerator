@@ -24,6 +24,7 @@
 html {
     color: white;
     font-size: 1.1875rem;
+    font-family: 'Montserrat-Regular';
 }
 
 body {
@@ -44,21 +45,35 @@ img {
     object-fit: cover;
 }
 
+input {
+    outline: none;
+}
+
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+
 
 /* LAYOUT */
 
-.contain {
+.contain-all {
     height: 100vh;
 }
 
 .container {
+    width: 90%;
     max-width: 1000px;
     margin: 0 auto;
 }
 
 .header {
-    height: 100px;
-    width: 1000px;
+    height: 70px;
+    width: 90%;
+    max-width: 1000px;
     background-color: #00a2ff;
     border-radius: 0 0  10px  10px;
 
@@ -98,6 +113,7 @@ img {
 .search {
     margin: 0 auto;
     color: grey;
+    margin-bottom: 30px;
 }
 
 
@@ -109,23 +125,12 @@ img {
 
 .gallery-images {
     margin: 20px auto;
-    /* display: grid;
-    grid-template-columns: repeat(3, 250px);
-    grid-auto-rows: 250px;
-    grid-auto-flow: dense;
-    gap: 30px; */
     column-count: 4;
     
 }
 
 .non-square-image {
-    /* grid-column: auto / span 1;
-    grid-row: auto / span 1;
-    object-fit: fill;
-    width: 250px;
-    height: 250px; */
     cursor: pointer;
-
     width: 100%;
     border-radius: 10px;
     border: 1px solid grey;
@@ -144,15 +149,27 @@ img {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 0 15px grey;
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.canvas-container {
+    margin: 20px auto;
 }
 
 
 .control-box {
-    width: 373px;
+    /* width: 100%; */
+    min-width: 200px;
+    width: 300px;
+    max-width: 100%;
+    margin: auto;
 }
 
 footer {
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
     background-color: #00a2ff;
     border-radius: 10px  10px 0 0;
     margin-top: 16px;
@@ -162,6 +179,9 @@ footer img {
     margin: 15px; 
 }
 
+footer p {
+    margin: 15px;
+}
 
 /*----------Edit Line Box------------*/
 
@@ -173,17 +193,41 @@ footer img {
     margin: 15px;
 }
 
-.edit-buttons {
+.buttons-section {
     display: block;
     margin-bottom: 20px;
     background: grey;
     border-radius: 100px;
-    padding: 10px;
+    padding: 5px;
+    color: white;
 }
 
-.style-buttons {
+.buttons-section button {
+    border-radius: 10px;
+    background-color: #f5f6fa;
+    padding: 5px 10px ;
+    font-size: 0.8rem;
+    margin: 5px;
+    transition: .2s;
+    border-radius: 3px;
+}
+.buttons-section button:hover {
+    background-color: rgb(47, 92, 145);
+}
+
+.buttons-section button img {
+    width: 20px;
+    height: 20px;
+}
+.move-line-down img {
+    transform: rotate(180deg);
+}
+
+.color-buttons lable {
     display: block;
 }
+
+
 
 /* --------HELPERS-------- */
 

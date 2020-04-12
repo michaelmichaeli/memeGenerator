@@ -56,7 +56,7 @@ function dragAndDrop() {
 
 function draw() {
     var img = new Image();
-    img.src = `./img/${getCurrMeme().selectedImgId}.jpg`;
+    img.src = `img/${getCurrMeme().selectedImgId}.jpg`;
     // gCanvas.width = img.width;
     // gCanvas.height = img.height;
     img.onload = () => {

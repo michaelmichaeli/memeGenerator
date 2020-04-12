@@ -12,14 +12,14 @@
 
 <body onload="onGalleryInit()">
 
-    <div class="contain flex column space-between">
+    <div class="contain-all flex column space-between">
 
         <Header class="header container flex space-between align-center justify-center">
-            <a href="index.html"><img class="logo" src="./img/logo.png"></a>
+            <a href="index.html"><img class="logo" src="img/logo.png"></a>
             <nav class="nav flex justify-center align-center">
                 <ul class="clean-list flex align-center justify-center">
-                    <li><a href="./saved-memes.html"> Memes </a></li>
-                    <li><a href="./index.html"> Gallery </a></li>
+                    <li><a href="saved-memes.html"> Memes </a></li>
+                    <li><a href="index.html"> Gallery </a></li>
                     <li><a href="#"> About </a></li>
                 </ul>
             </nav>
@@ -28,30 +28,28 @@
 
         <main class="container flex column">
 
+            <form class="search">
+                <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..."
+                    onkeyup="onSearch(this.value)">
+                <button class="search-btn" onmousedown="onClearSearch()">clear</button>
+                <datalist id="key-words">
+                    <option value="cat">
+                    <option value="dog">
+                    <option value="movies">
+                    <option value="movie">
+                    <option value="president">
+                    <option value="puttin">
+                    <option value="tv">
+                    <option value="matrix">
+                    <option value="חיים הכט">
+                    <option value="funny">
+                    <option value="girl">
+                    <option value="angry">
+                    <option value="africa">
+                    <option value="evil">
+                </datalist>
+            </form>
             <section class="gallery flex column">
-
-                <form class="search">
-                    <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..."
-                        onkeyup="onSearch(this.value)">
-                    <button class="search-btn" onmousedown="onClearSearch()">clear</button>
-                    <datalist id="key-words">
-                        <option value="cat">
-                        <option value="dog">
-                        <option value="movies">
-                        <option value="movie">
-                        <option value="president">
-                        <option value="puttin">
-                        <option value="tv">
-                        <option value="matrix">
-                        <option value="חיים הכט">
-                        <option value="funny">
-                        <option value="girl">
-                        <option value="angry">
-                        <option value="africa">
-                        <option value="evil">
-                    </datalist>
-                </form>
-
                 <div class="gallery-images">
                 </div>
 
@@ -65,37 +63,45 @@
                         onmousedown="onChangeSelection(event)"></canvas>
                 </div>
 
-                <div class="control-box">
+                <div class="control-box align-center justify-center">
 
-                    <label>Lines Text: <input class="txt-input" type="text" value="I never eat Falafel"
-                            onkeyup="onUpdateLineTxt(value)"></label>
+                    <label>Text: <input class="txt-input" type="text" onkeyup="onUpdateLineTxt(value)"></label>
 
-                    <div class="edit-buttons">
-                        <button onclick="onSwitchLineFocus()" class="switch-line">Switch</button>
-                        <button onclick="onMoveLine('up')" class="move-line">Up</button>
-                        <button onclick="onMoveLine('down')" class="move-line">Down</button>
-                        <button onclick="onAddLine()" class="add-btn">Add</button>
-                        <button onclick="onDeleteLine()" class="delete-btn">Delete</button>
+                    <div class="edit-buttons buttons-section">
+                        <button onclick="onSwitchLineFocus()" class="switch-line"><img
+                                src="icons/up_down_arrow.png"></button>
+                        <button onclick="onMoveLine('up')" class="move-line-up"><img
+                                src="icons/arrow-up.svg"></button>
+                        <button onclick="onMoveLine('down')" class="move-line-down"><img
+                                src="icons/arrow-up.svg"></button>
+                        <button onclick="onAddLine()" class="add-btn"><img src="icons/add.png"></button>
+                        <button onclick="onDeleteLine()" class="delete-btn"><img src="icons/trash.png"></button>
                     </div>
 
-                    <div class="style-buttons">
-                        <button onclick="onChangeFontSize('up')" name="size" value="bigger">A+</button>
-                        <button onclick="onChangeFontSize('down')" name="size" value="smaller">A-</button>
-                        <button onclick="onChangeLineAligment('left')" name="direction" value="left">Left</button>
-                        <button onclick="onChangeLineAligment('center')" name="direction" value="center">Center</button>
-                        <button onclick="onChangeLineAligment('right')" name="direction" value="right">Right</button>
-                        <label>Stroke color: <input onchange="onChangeStrokeColor()" name="strokeColor"
-                                type="color"></label>
+                    <div class="style-buttons buttons-section">
+                        <button onclick="onChangeFontSize('up')" name="size" value="bigger"><img
+                                src="icons/increase font - icon.png"></button>
+                        <button onclick="onChangeFontSize('down')" name="size" value="smaller"><img
+                                src="icons/decrease font - icon.png"></button>
+                        <button onclick="onChangeLineAligment('left')" name="direction" value="left"><img
+                                src="icons/align-to-left.png"></button>
+                        <button onclick="onChangeLineAligment('center')" name="direction" value="center"><img
+                                src="icons/center-text-alignment.png" </button>
+                            <button onclick="onChangeLineAligment('right')" name="direction" value="right"><img
+                                    src="icons/align-to-right.png" </button>
+                    </div>
+
+                    <div class="color-buttons buttons-section">
+                        <div><label>Stroke color: <input onchange="onChangeStrokeColor()" name="strokeColor"
+                                    type="color"></label></div>
                         <label>Text color: <input onchange="onChangeFontColor()" name="fontColor" type="color"
                                 value="#ffffff"></label>
                     </div>
 
-                    <div class="stickers">Stickers Come Here</div>
-
-                    <div class="export-buttons">
-                        <button onclick="onSave()">Save</button>
-                        <button onclick="onShare()">Share</button>
-                        <button onclick="onDownload()">Download</button>
+                    <div class="export-buttons buttons-section">
+                        <button onclick="onSave()"><img src="icons/save.png"></button>
+                        <button onclick="onShare()"><img src="icons/fff.png"></button>
+                        <button onclick="onDownload()"><img src="icons/download.png"></button>
                     </div>
                 </div>
 
@@ -104,9 +110,9 @@
         </main>
 
 
-        <footer class="footer container flex column align-center">
+        <footer class="footer container flex align-center space-between">
 
-            <img class="logo" src="./img/logo.png">
+            <img class="logo" src="img/logo.png">
             <p>all rights reserved 2020</p>
 
         </footer>

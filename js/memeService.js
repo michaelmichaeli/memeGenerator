@@ -27,7 +27,7 @@ function findClickedLine(x, y) {
 
 function setLinesWidth() {
     gMeme.lines.forEach((line) => {
-        line.width = gCtx.measureText(line.txt).width * line.fontSize * 0.1;
+        line.width = gCtx.measureText(line.txt).width * line.fontSize * 0.09;
         // console.log(line.width);
     });
 }
