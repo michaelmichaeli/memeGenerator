@@ -17,10 +17,10 @@ function renderSavedMemes(memes) {
 
     var strHTML = memes.map((meme, idx) => {
         return `<div class="saved-meme-box flex column space-between">
-            <img src="${meme.imgContent}" onclick="onOpenSaved('${meme.imgContent}')" alt="" />
+            <img src="${meme.img64bit}" onclick="onOpenSaved('${meme.img64bit}')" alt="" />
             <div>
                 <a class="delete-meme" onclick="onDelete(${idx})"><img src="icons/trash.png"></a>
-                <a href="#" class="download-meme" onmouseup="onDownload(this, '${meme.imgContent}')" download="meme.jpg"><img src="icons/download.png"></a>
+                <a href="#" class="download-meme" onmouseup="onDownload(this, '${meme.img64bit}')" download="meme.jpg"><img src="icons/download.png"></a>
             </div>
         </div>`
     })
