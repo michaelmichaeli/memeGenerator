@@ -11,26 +11,25 @@
 </head>
 
 <body onload="onGalleryInit()">
-
+    <section class="screen" onclick="onToggleMenu()"></section>
+    
     <div class="contain-all flex column space-between full-width justify-center align-center">
 
         <Header class="header container flex space-between align-center justify-center">
             <a href="index.html"><img class="logo" src="img/logo.png"></a>
             <nav>
-                <ul class="clean-list flex align-center justify-center">
+                <ul class="clean-list flex align-center">
                     <li><a href="saved-memes.html"> Memes </a></li>
                     <li><a href="index.html"> Gallery </a></li>
                     <li><a href="#"> About </a></li>
                 </ul>
             </nav>
-            <button class="burger-nav" onclick="onToggleBurgerNav()"> ☰ </button>
+            <button class="burger-nav" onclick="onToggleMenu()"> ☰ </button>
         </Header>
 
 
-        <input class="file-input btn" type="file" name="image" onchange="onImgInput(event)">
-
-
         <form class="search">
+            <input class="file-input btn" type="file" name="image" onchange="onImgInput(event)">
             <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..."
                 onkeyup="onSearch(this.value)">
             <button class="search-btn" onmousedown="onClearSearch()">clear</button>

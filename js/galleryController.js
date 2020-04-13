@@ -3,8 +3,8 @@
 var gIsUpload = false;
 var gUploadSrc;
 
-function onOpenBurgerNav() {
-
+function onToggleMenu() {
+    document.body.classList.toggle('menu-open');
 }
 
 function onClearSearch() {
