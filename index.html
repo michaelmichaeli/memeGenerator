@@ -12,51 +12,58 @@
 
 <body onload="onGalleryInit()">
 
-    <div class="contain-all flex column space-between">
+    <div class="contain-all flex column space-between full-width justify-center align-center">
 
         <Header class="header container flex space-between align-center justify-center">
             <a href="index.html"><img class="logo" src="img/logo.png"></a>
-            <nav class="nav flex justify-center align-center">
+            <nav>
                 <ul class="clean-list flex align-center justify-center">
                     <li><a href="saved-memes.html"> Memes </a></li>
                     <li><a href="index.html"> Gallery </a></li>
                     <li><a href="#"> About </a></li>
                 </ul>
             </nav>
+            <button class="burger-nav" onclick="onToggleBurgerNav()"> ☰ </button>
         </Header>
 
 
-        <main class="container flex column">
+        <input class="file-input btn" type="file" name="image" onchange="onImgInput(event)">
 
-            <form class="search">
-                <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..."
-                    onkeyup="onSearch(this.value)">
-                <button class="search-btn" onmousedown="onClearSearch()">clear</button>
-                <datalist id="key-words">
-                    <option value="cat">
-                    <option value="dog">
-                    <option value="movies">
-                    <option value="movie">
-                    <option value="president">
-                    <option value="puttin">
-                    <option value="tv">
-                    <option value="matrix">
-                    <option value="חיים הכט">
-                    <option value="funny">
-                    <option value="girl">
-                    <option value="angry">
-                    <option value="africa">
-                    <option value="evil">
-                </datalist>
-            </form>
-            <section class="gallery flex column">
+
+        <form class="search">
+            <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..."
+                onkeyup="onSearch(this.value)">
+            <button class="search-btn" onmousedown="onClearSearch()">clear</button>
+            <datalist id="key-words">
+                <option value="חיים הכט">
+                <option value="cat">
+                <option value="dog">
+                <option value="movies">
+                <option value="movie">
+                <option value="president">
+                <option value="puttin">
+                <option value="tv">
+                <option value="matrix">
+                <option value="funny">
+                <option value="girl">
+                <option value="angry">
+                <option value="africa">
+                <option value="evil">
+            </datalist>
+        </form>
+
+        <main class=" flex column">
+
+            <section class="gallery flex column align-center">
+
                 <div class="gallery-images">
-                </div>
 
+
+                </div>
             </section>
 
 
-            <section class="editor container" hidden>
+            <section class="editor " hidden>
 
                 <div class="canvas-container">
                     <canvas id="meme-canvas" width="500px" height="500px"
@@ -70,8 +77,7 @@
                     <div class="edit-buttons buttons-section">
                         <button onclick="onSwitchLineFocus()" class="switch-line"><img
                                 src="icons/up_down_arrow.png"></button>
-                        <button onclick="onMoveLine('up')" class="move-line-up"><img
-                                src="icons/arrow-up.svg"></button>
+                        <button onclick="onMoveLine('up')" class="move-line-up"><img src="icons/arrow-up.svg"></button>
                         <button onclick="onMoveLine('down')" class="move-line-down"><img
                                 src="icons/arrow-up.svg"></button>
                         <button onclick="onAddLine()" class="add-btn"><img src="icons/add.png"></button>
@@ -92,16 +98,21 @@
                     </div>
 
                     <div class="color-buttons buttons-section">
-                        <div><label>Stroke color: <input onchange="onChangeStrokeColor()" name="strokeColor"
-                                    type="color"></label></div>
-                        <label>Text color: <input onchange="onChangeFontColor()" name="fontColor" type="color"
-                                value="#ffffff"></label>
+                        <label class="stroke-label"><img src="icons/text stroke.png"><input onchange="onChangeStrokeColor()" name="strokeColor"
+                                    type="color" hidden></label>
+                        <label class="stroke-label"><img src="icons/paint-board-and-brush.png"><input onchange="onChangeFontColor()" name="fontColor" type="color"
+                                value="#ffffff" hidden></label>
                     </div>
 
                     <div class="export-buttons buttons-section">
                         <button onclick="onSave()"><img src="icons/save.png"></button>
-                        <button onclick="onShare()"><img src="icons/fff.png"></button>
-                        <button onclick="onDownload()"><img src="icons/download.png"></button>
+                        <button><a onmousedown="clearMark()" onmouseup="onDownloadImg(this)" href="'#"
+                                download="meme.jpg"><img src="icons/download.png"></a></button>
+                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="btn " type="submit"><img src="icons/fff.png"></button>
+                            <div class="share-container"></div>
+                        </form>
                     </div>
                 </div>
 
@@ -119,6 +130,16 @@
 
     </div>
 
+
+
+    <div class="modal">
+        <div class="modal-screen" onclick="closeModal()"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title"></h2>
+            </div>
+        </div>
+    </div>
 
     <script src="lib/jquery.js"></script>
     <script src="js/utils.js"></script>

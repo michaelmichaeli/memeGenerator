@@ -2,6 +2,18 @@
 var gCanvas;
 var gCtx;
 var isDragMode = false;
+var gSavedMemes = loadFromStorage('MEMES')
+
+
+function onDownloadImg(elLink) {
+    clearMark();
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent;
+}
+
+function clearMark() {
+    draw(false);
+}
 
 function onChangeSelection(ev) {
     const offsetX = ev.offsetX;
@@ -21,18 +33,48 @@ function updateTextInput() {
     elTextInput.value = currLine;
 }
 
-
 function memeInit(imageId) {
     gCanvas = document.querySelector('#meme-canvas');
     gCtx = gCanvas.getContext('2d');
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-    // clearMeme();
     addImage(imageId);
-    // setLinesWidth();
     addLine();
     dragAndDrop();
     draw();
 }
+
+
+// on submit call to this function
+function uploadImg(elForm, ev) {
+    ev.preventDefault();
+    document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+           Share   
+        </a>`
+    }
+
+    doUploadImg(elForm, onSuccess);
+}
+function doUploadImg(elForm, onSuccess) {
+    var formData = new FormData(elForm);
+    fetch('http://ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(function (res) {
+            return res.text()
+        })
+        .then(onSuccess)
+        .catch(function (err) {
+            console.error(err)
+        })
+}
+
 
 function dragAndDrop() {
     const elCanvas = document.querySelector('#meme-canvas');
@@ -54,36 +96,29 @@ function dragAndDrop() {
     })
 }
 
-function draw() {
+function draw(mark = true) {
     var img = new Image();
-    img.src = `img/${getCurrMeme().selectedImgId}.jpg`;
-    // gCanvas.width = img.width;
-    // gCanvas.height = img.height;
+    if (!gIsUpload) img.src = `img/${getCurrMeme().selectedImgId}.jpg`;
+    else {
+        img.src = gUploadSrc;
+    }
     img.onload = () => {
         gCanvas.height = gCanvas.width * img.height / img.width;
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
         setLinesWidth();
-        markLineFocus();
+
+        if (mark) markLineFocus();
+
         getCurrMeme().lines.forEach((line) => drawTxtLine(line));
         updateTextInput();
     };
 }
 
 function markLineFocus() {
-    
     const currLine = getCurrLine();
-    
-    
     gCtx.beginPath();
     gCtx.fillStyle = 'rgba(0, 162, 255, 0.4)';
-    // gCtx.lineWidth = 3;
-    
-    gCtx.rect(currLine.location.x - currLine.width / 2  , currLine.location.y - currLine.fontSize, currLine.width, currLine.fontSize + 5);
-
-
-    // gCtx.rect(currLine.location.x - currLine.width / 2 - 5, currLine.location.y - currLine.fontSize, currLine.width + 10, currLine.fontSize + 5);
-    
-    // gCtx.stroke();
+    gCtx.rect(currLine.location.x - currLine.width / 2, currLine.location.y - currLine.fontSize, currLine.width, currLine.fontSize + 5);
     gCtx.fill();
 }
 
@@ -120,7 +155,7 @@ function onSwitchLineFocus() {
     switchSelectedLines();
     updateTextInput();
     draw();
-    markLineFocus();
+    // markLineFocus();
 }
 
 function onChangeFontSize(direction) {
@@ -133,7 +168,6 @@ function onChangeLineAligment(lcr) {
     ChangeLineAligment(lcr);
     draw();
 }
-
 
 function onChangeFontColor() {
     const fontColor = document.querySelector('input[name="fontColor"]').value;
@@ -152,13 +186,25 @@ function onChangeFontFamily(font) {
 }
 
 
-function onSave() {
-    var memes = loadFromStorage('MEMES');
-    if (memes) {
-        memes = Array.from(memes)
-        memes.push(getCurrMeme())
-    }
-    else memes = getCurrMeme();
-    saveToStorage('MEMES', memes);
 
+function onSave() {
+    clearMark();
+    openModal();
+    setTimeout(() => {
+        closeModal;
+        const imgContent = gCanvas.toDataURL();
+        const meme = getCurrMeme();
+        gSavedMemes.push({ imgContent, id: makeId(2), meme });
+        saveToStorage('MEMES', gSavedMemes);
+    }, 1500);
+}
+
+function openModal() {
+    document.querySelector('.modal').style.display = 'block';
+    const elModalTitle = document.querySelector('.modal-title');
+    elModalTitle.innerHTML = `Your meme has been saved successfully`;
+}
+
+function closeModal() {
+    document.querySelector('.modal').style.display = 'none';
 }

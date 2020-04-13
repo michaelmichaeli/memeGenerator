@@ -2,124 +2,53 @@
 <html lang="en">
 
 <head>
-
     <link rel="stylesheet" href="styles/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saved Memes</title>
-
 </head>
 
 <body onload="onSavedGalleryInit()">
 
-    <Header class="header container flex space-between align-center">
-        <a href="index.html"><img class="logo" src="./img/logo.png"></a>
-        <nav class="nav">
-            <ul class="clean-list flex align-center">
-                <li><a href="./saved-memes.html"> Memes </a></li>
-                <li><a href="index.html"> Gallery </a></li>
-                <li><a href="#"> About </a></li>
-            </ul>
-        </nav>
-    </Header>
+    <div class="contain-all flex column space-between full-width">
+
+        <Header class="header container flex space-between align-center justify-center">
+            <a href="index.html"><img class="logo" src="img/logo.png"></a>
+            <nav class="nav flex justify-center align-center">
+                <ul class="clean-list flex align-center justify-center">
+                    <li><a href="saved-memes.html"> Memes </a></li>
+                    <li><a href="index.html"> Gallery </a></li>
+                    <li><a href="#"> About </a></li>
+                </ul>
+            </nav>
+        </Header>
+
+        <main>
+
+            <section class="saved-memes-boxes flex wrap">
+
+            </section>
+
+        </main>
 
 
-    <main class="container flex column">
+        <footer class="footer container flex align-center space-between">
 
-        <section class="gallery flex column">
+            <img class="logo" src="img/logo.png">
+            <p>all rights reserved 2020</p>
 
-            <form class="search">
-                <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..." onkeyup="onSearch(this.value)">
-                <button class="search-btn">search</button>
-                <datalist id="key-words">
-                    <option value="cat">
-                    <option value="dog">
-                    <option value="movies">
-                    <option value="movie">
-                    <option value="president">
-                    <option value="puttin">
-                    <option value="tv">
-                    <option value="matrix">
-                    <option value="חיים הכט">
-                    <option value="funny">
-                    <option value="girl">
-                    <option value="angry">
-                    <option value="africa">
-                    <option value="evil">
-                </datalist>
-            </form>
+        </footer>
 
-            <div class="gallery-images">
-            </div>
-
-        </section>
-
-        <section class="editor container" hidden>
-
-            <div class="canvas-container">
-                <canvas id="meme-canvas" width="500px" height="500px" onmousedown="onChangeSelection(event)"></canvas>
-            </div>
-
-            <div class="control-box">
-
-                <label>Lines Text: <input class="txt-input" type="text" value="I never eat Falafel" onkeyup="onUpdateLineTxt(value)"></label>
-
-                <div class="edit-buttons">
-                    <button onclick="onSwitchLineFocus()" class="switch-line">Switch</button>
-                    <button onclick="onMoveLine('up')" class="move-line">Up</button>
-                    <button onclick="onMoveLine('down')" class="move-line">Down</button>
-                    <button onclick="onAddLine()" class="add-btn">Add</button>
-                    <button onclick="onDeleteLine()" class="delete-btn">Delete</button>
-                </div>
-
-                <div class="style-buttons">
-                    <button onclick="onChangeFontSize('up')" name="size" value="bigger">A+</button>
-                    <button onclick="onChangeFontSize('down')" name="size" value="smaller">A-</button>
-                    <button onclick="onChangeLineAligment('left')" name="direction" value="left">Left</button>
-                    <button onclick="onChangeLineAligment('center')" name="direction" value="center">Center</button>
-                    <button onclick="onChangeLineAligment('right')" name="direction" value="right">Right</button>
-                    <div class="font-dropdown">
-                        <button onclick="" name="fontFamily" value="font 1">Font 1</button>
-                        <button onclick="" name="fontFamily" value="font 2">Font 2</button>
-                    </div>
-                    <label>Stroke color: <input onchange="onChangeStrokeColor()" name="strokeColor" type="color"></label>
-                    <label>Text color: <input onchange="onChangeFontColor()" name="fontColor" type="color" value="#ffffff"></label>
-                </div>
-
-                <div class="stickers">Stickers Come Here</div>
-
-                <div class="export-buttons">
-                    <button onclick="onSave()">Save</button>
-                    <button onclick="onShare()">Share</button>
-                    <button onclick="onDownload()">Download</button>
-                </div>
-            </div>
-
-        </section>
-
-    </main>
-
-
-    </main>
-
-
-    <footer class="footer container flex column align-center">
-
-        <img class="logo" src="./img/logo.png">
-        <p>all rights reserved 2020</p>
-
-    </footer>
-
+    </div>
 
     <script src="lib/jquery.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/storage-service.js"></script>
-    <script src="js/savedGalleryService.js"></script>
-    <script src="js/savedGalleryController.js"></script>
-    <script src="js/galleryController.js"></script>
     <script src="js/galleryService.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/savedGalleryController.js"></script>
 
 </body>
 

@@ -1,5 +1,12 @@
 'use strict'
 
+var gIsUpload = false;
+var gUploadSrc;
+
+function onOpenBurgerNav() {
+
+}
+
 function onClearSearch() {
     const elSearchInput = document.querySelector('input[name="search-input"]');
     elSearchInput.value = '';
@@ -29,7 +36,6 @@ function renderGallery(images) {
 function onImageClicked(id) {
     renderEditView();
     memeInit(id);
-    // onChangeLineAligment('center');
 }
 
 function renderEditView() {
@@ -45,3 +51,27 @@ function renderEditView() {
 }
 
 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderUpload)
+}
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var img = new Image();
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result;
+        gUploadSrc = img.src
+        gIsUpload = true
+        renderUpload();
+        draw();
+    }
+    reader.readAsDataURL(ev.target.files[0]);
+}
+function renderUpload() {
+    renderEditView();
+    gCanvas = document.querySelector('#meme-canvas');
+    gCtx = gCanvas.getContext('2d');
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    addLine();
+    dragAndDrop();
+}

@@ -19,18 +19,20 @@
     src: url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
 }
 
+
+
 /* BASICS */
 
 html {
-    color: white;
+    color: grey;
     font-size: 1.1875rem;
     font-family: 'Montserrat-Regular';
+    text-align: center;
 }
 
 body {
     margin: 0;
 }
-
 
 a {
     text-decoration: none;
@@ -39,10 +41,6 @@ a {
 
 p {
     margin: 0 0 1em;
-}
-
-img {
-    object-fit: cover;
 }
 
 input {
@@ -56,6 +54,12 @@ button {
     outline: none;
 }
 
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
 
 
 /* LAYOUT */
@@ -65,36 +69,34 @@ button {
 }
 
 .container {
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .header {
-    height: 70px;
-    width: 90%;
-    max-width: 1000px;
+    height: 100px;
+    width: 100%;
+    /* width: 90%;
+    max-width: 1000px; */
     background-color: #00a2ff;
     border-radius: 0 0  10px  10px;
-
+    margin-bottom: 10px;
 }
 
 .logo {
     width: 200px;
-    margin-inline-start: 30px;
+    margin-inline-start: 20px;
 }
 
-.nav {
+nav {
     height: 100%;
 }
 
-
-.nav ul {
+nav ul {
     height: 100%;
-
 }
 
-.nav li {
+nav li {
     height: 100%;
     width: 100%;
     display: flex;
@@ -105,17 +107,35 @@ button {
     text-transform: uppercase;
     text-shadow: 0 1px 1px #040a2c;
 }
-
-.nav li:hover {
+nav li:hover {
     background-color: rgba(0,0,0,0.1);
 }
 
 .search {
-    margin: 0 auto;
+    margin: 10px auto;
     color: grey;
-    margin-bottom: 30px;
 }
 
+section .saved-memes-boxes {
+    width: 100%;
+    height: 100%;
+}
+
+.saved-meme-box {
+    display: inline-block;
+    width: 250px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    transition: 0.3s;
+    filter: brightness(80%);
+}
+
+.saved-meme-box img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 .gallery {
     width: 100%;
@@ -126,7 +146,6 @@ button {
 .gallery-images {
     margin: 20px auto;
     column-count: 4;
-    
 }
 
 .non-square-image {
@@ -140,7 +159,6 @@ button {
 .non-square-image:hover {
     filter: brightness(120%);
 }
-
 
 .editor {
     background-color: #e3e3e3;
@@ -158,7 +176,6 @@ button {
     margin: 20px auto;
 }
 
-
 .control-box {
     /* width: 100%; */
     min-width: 200px;
@@ -168,12 +185,14 @@ button {
 }
 
 footer {
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
+    /* width: 90%; */
+    /* max-width: 1000px; */
     background-color: #00a2ff;
     border-radius: 10px  10px 0 0;
     margin-top: 16px;
     font-family: "Montserrat-Thin";
+    margin-top: 20px;
 }
 footer img {
     margin: 15px; 
@@ -183,7 +202,7 @@ footer p {
     margin: 15px;
 }
 
-/*----------Edit Line Box------------*/
+/*----------Box------------*/
 
 .txt-input {
     /* width: 373px;
@@ -219,6 +238,13 @@ footer p {
     width: 20px;
     height: 20px;
 }
+
+.buttons-section label img {
+    width: 30px;
+    height: 30px;
+}
+
+
 .move-line-down img {
     transform: rotate(180deg);
 }
@@ -228,8 +254,127 @@ footer p {
 }
 
 
+.download-meme img, .delete-meme img {
+    cursor: pointer;;
+    width: 45px;
+    height: 45px;
+    border-radius: 20%;
+    background-color: #fff;
+    padding: 10px;
+    z-index: 2;
+    margin: 5px
+}
+
+.burger-nav {
+    display: none;
+    margin-inline-end: 20px;
+    background-color: transparent;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+
+
+
+/* *** MEDIA QUERIES *** */
+
+@media (max-width: 1060px) {
+    
+    .gallery-images {
+        column-count: 3;
+    }
+    canvas {
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    
+}
+
+@media (max-width: 740px) {
+    main {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .gallery {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .editor{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }    
+}
+
+@media (max-width: 620px) {
+    
+    .gallery-images {
+        column-count: 2;
+        text-align: center;
+    }
+    .imgs-container img {
+        max-width: 500px;
+    }
+    canvas {
+        max-width: 500px;
+    }
+    nav {
+        display: none;
+    }
+    .burger-nav {
+        display: inline-block;
+    }
+}
+
+
+
+
+
+
 
 /* --------HELPERS-------- */
+
+
+/* Modal */
+
+.modal {
+    display: none;
+    height: 100%;
+    color: black;
+    text-align: center;
+}
+
+.modal-screen {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.modal-container {
+    background-color: white;
+    width: 40%;
+    height: fit-content;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 39px 5px rgba(0, 0, 0, 0.5);
+}
+
+
 
 /* flex-helpers */
 
