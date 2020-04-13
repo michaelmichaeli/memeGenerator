@@ -188,15 +188,14 @@ function onChangeFontFamily(font) {
 function onSave() {
     clearMark();
     openModal();
-    setTimeout(closeModal, 1500);
-    const meme = getCurrMeme();
-    
-    var img64bit = gCanvas.toDataURL();
-    
-    if (!gSavedMemes) gSavedMemes = [];
-    
-    gSavedMemes.push({ img64bit, id: makeId(2), meme });
-    saveToStorage('MEMES', gSavedMemes);
+    setTimeout(()=> {
+        closeModal();
+        const meme = getCurrMeme();
+        var img64bit = gCanvas.toDataURL();
+        if (!gSavedMemes) gSavedMemes = [];
+        gSavedMemes.push({ img64bit, id: makeId(2), meme });
+        saveToStorage('MEMES', gSavedMemes);
+    }, 1500);
 }
 
 function openModal() {
