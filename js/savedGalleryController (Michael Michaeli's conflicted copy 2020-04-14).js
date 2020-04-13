@@ -3,7 +3,7 @@
 var gMemes = loadFromStorage('MEMES');
 
 function onSavedGalleryInit() {
-    console.log(gMemes || gMemes.length);
+    console.log(gMemes);
     
     if (gMemes) {
         renderSavedMemes(gMemes);

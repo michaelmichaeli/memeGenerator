@@ -46,6 +46,7 @@ html {
     font-size: 1.1875rem;
     font-family: 'Montserrat-Regular';
     text-align: center;
+    overflow-x: hidden;
 }
 
 body {

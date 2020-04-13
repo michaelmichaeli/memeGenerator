@@ -3,12 +3,12 @@
 var gMemes = loadFromStorage('MEMES');
 
 function onSavedGalleryInit() {
-    if (gMemes) {
-        renderSavedMemes(gMemes);
-    }
-    else {
+    if (!gMemes || !gMemes.length) {
         const elContainer = document.querySelector('main')
         elContainer.innerHTML = `<p class="with-margin">There are no saved memes yet, you can generate memes and save them here.</p>`;
+    }
+    else {
+        renderSavedMemes(gMemes);
     }
 }
 
