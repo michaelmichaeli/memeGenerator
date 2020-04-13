@@ -2,8 +2,8 @@
 var gCanvas;
 var gCtx;
 var isDragMode = false;
-var gSavedMemes = loadFromStorage('MEMES');
-var gImgContent;
+var gSavedMemes = loadFromStorage('MEMES')
+
 
 function onDownloadImg(elLink) {
     clearMark();
@@ -111,7 +111,6 @@ function draw(mark = true) {
 
         getCurrMeme().lines.forEach((line) => drawTxtLine(line));
         updateTextInput();
-        gImgContent = gCanvas.toDataURL();
     };
 }
 
@@ -186,29 +185,24 @@ function onChangeFontFamily(font) {
 
 }
 
+
+
 function onSave() {
     clearMark();
     openModal();
-    setTimeout(closeModal, 1500);
-    const meme = getCurrMeme();
-    console.log('meme', meme);
-
-    
-    
-    // var imgContent = gCanvas.toDataURL();
-    // console.log('imgContent', imgContent);
-    
-    if (!gSavedMemes) gSavedMemes = [];
-    console.log('gSavedMemes', gSavedMemes);
-    
-    gSavedMemes.push({ gImgContent, id: makeId(2), meme });
-    saveToStorage('MEMES', gSavedMemes);
+    setTimeout(() => {
+        closeModal;
+        let imgContent = gCanvas.toDataURL();
+        let meme = getCurrMeme();
+        gSavedMemes.push({ imgContent, id: makeId(2), meme });
+        saveToStorage('MEMES', gSavedMemes);
+    }, 1500);
 }
 
 function openModal() {
     document.querySelector('.modal').style.display = 'block';
-    // const elModalTitle = document.querySelector('.modal-title');
-    // elModalTitle.innerHTML = `Your meme has been saved successfully`;
+    const elModalTitle = document.querySelector('.modal-title');
+    elModalTitle.innerHTML = `Your meme has been saved successfully`;
 }
 
 function closeModal() {

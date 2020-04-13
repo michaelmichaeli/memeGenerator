@@ -30,10 +30,11 @@
 
 
         <form class="search">
-            <input class="file-input btn" type="file" name="image" onchange="onImgInput(event)">
+            <input class="file-input" type="file" name="file" onchange="onImgInput(event)">
+            <!-- <label for="file">Upload Image</label> -->
             <input list="key-words" class="search-input" name="search-input" type="text" placeholder="Search..."
                 onkeyup="onSearch(this.value)">
-            <button class="search-btn" onmousedown="onClearSearch()">clear</button>
+            <button class="search-btn" onmousedown="onClearSearch()">x</button>
             <datalist id="key-words">
                 <option value="חיים הכט">
                 <option value="cat">
@@ -108,11 +109,11 @@
                         <button onclick="onSave()"><img src="icons/save.png"></button>
                         <button><a onmousedown="clearMark()" onmouseup="onDownloadImg(this)" href="'#"
                                 download="meme.jpg"><img src="icons/download.png"></a></button>
-                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <!-- <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                             <input name="img" id="imgData" type="hidden" />
                             <button class="btn " type="submit"><img src="icons/fff.png"></button>
                             <div class="share-container"></div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
 
@@ -134,7 +135,7 @@
         <div class="modal-screen" onclick="closeModal()"></div>
         <div class="modal-container">
             <div class="modal-header">
-                <h2 class="modal-title"></h2>
+                <p class="modal-title">Your meme has been saved successfully</p>
             </div>
         </div>
     </div>

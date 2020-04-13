@@ -77,8 +77,9 @@ main {
     margin: 0 auto;
 }
 
-
-
+label {
+    cursor: pointer;
+}
 
 /* LAYOUT */
 
@@ -92,18 +93,42 @@ main {
 }
 
 .header {
-    height: 100px;
+    min-height: 100px;
     width: 100%;
     /* width: 90%;
     max-width: 1000px; */
     background-color: #00a2ff;
     border-radius: 0 0  10px  10px;
     margin-bottom: 10px;
+    box-shadow: 0 0 15px 1px grey;
+    box-shadow: inset 0 -1px 1px 0 black;
 }
+.header::after {
+    transform: rotate(180deg);
+    opacity: 0.7;
+    content: "";
+    width: 99.5%;
+    height: 30px;
+    position: absolute;
+    left: 4px;
+    top: 65px;
+    z-index: 10;
+    background: -moz-linear-gradient(top, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 1%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    border-radius: 20px / 20px;
+}
+
+
+
+
 
 .logo {
     width: 200px;
     margin-inline-start: 20px;
+    z-index: 999;
 }
 
 nav {
@@ -211,6 +236,24 @@ footer {
     border-radius: 10px  10px 0 0;
     font-family: "Montserrat-Thin";
     margin-top: 10px;
+    box-shadow: 0 0 10px 1px grey;
+    box-shadow: inset 1px 1px 1px 0 black;
+}
+footer::after {
+    opacity: 0.5;
+    content: "";
+    width: 99%;
+    height: 45px;
+    position: absolute;
+    left: 4px;
+    /* buttom: 85px; */
+    z-index: 10;
+    background: -moz-linear-gradient(top, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 1%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(top, rgba(232,232,232,1) 0%,rgba(232,232,232,1) 1%,rgba(255,255,255,0) 100%);
+    border-radius: 10px / 20px;
 }
 footer img {
     margin: 10px;
@@ -222,6 +265,38 @@ footer p {
     margin: 15px;
     color: white;
     text-shadow: 1px 1px 3px black;
+}
+
+.file-input , .search-input {
+    padding: 5px 20px;
+    width: 250px;
+    border-radius: 20px;
+    border: 2px solid grey;
+    background-color: lightgrey;
+}
+.file-input + label {
+    /* font-size: 1.25em; */
+    /* font-weight: 700; */
+    color: white;
+    background-color: #00a2ff;
+    display: inline-block;
+    margin-inline-end: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.file-input:focus + label,
+.file-input + label:hover {
+    background-color: rgb(47, 92, 145);
+}
+.file-input + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.search-btn {
+    border-radius: 50%;
+    border: 3px solid lightgrey;
 }
 
 /*----------Box------------*/
@@ -378,7 +453,7 @@ footer p {
 
     }
     nav li {
-        height: auto;
+        /* height: auto; */
         display: block;
         text-align: left;
         margin-bottom: 15px;
@@ -394,6 +469,10 @@ footer p {
 
 
 /* --------HELPERS-------- */
+
+.with-margin{
+    margin: 50px;
+}
 
 
 /* Modal */
@@ -432,7 +511,9 @@ footer p {
     box-shadow: 0px 0px 39px 5px rgba(0, 0, 0, 0.5);
 }
 
-
+.modal p {
+    padding: 10px;
+}
 
 /* flex-helpers */
 
