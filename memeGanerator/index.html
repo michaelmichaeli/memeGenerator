@@ -11,7 +11,6 @@
 </head>
 
 <body onload="onGalleryInit()">
-
     <section class="screen" onclick="onToggleMenu()"></section>
     
     <div class="contain-all flex column space-between full-width justify-center align-center">
@@ -72,7 +71,7 @@
 
                 <div class="control-box align-center justify-center">
 
-                    <input class="txt-input" type="text" onkeyup="onUpdateLineTxt(value)">
+                    <label>Text: <input class="txt-input" type="text" onkeyup="onUpdateLineTxt(value)"></label>
 
                     <div class="edit-buttons buttons-section">
                         <button onclick="onSwitchLineFocus()" class="switch-line"><img
@@ -123,12 +122,14 @@
 
         <footer class="footer container flex align-center space-between">
 
-            <p>All rights reserved 2020</p>
             <img class="logo" src="img/logo.png">
+            <p>all rights reserved 2020</p>
 
         </footer>
 
     </div>
+
+
 
     <div class="modal">
         <div class="modal-screen" onclick="closeModal()"></div>
@@ -139,6 +140,7 @@
         </div>
     </div>
 
+    <script src="lib/jquery.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/galleryService.js"></script>

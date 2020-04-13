@@ -182,7 +182,7 @@ section .saved-memes-boxes {
     background-color: #e3e3e3;
     color: grey;
     text-align: center;
-    /* padding: 10px 30px; */
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0 0 15px grey;
     width: 90%;
@@ -192,9 +192,6 @@ section .saved-memes-boxes {
 
 .canvas-container {
     margin: 20px auto;
-}
-canvas {
-    margin-inline-end: 10px;
 }
 
 .control-box {
@@ -207,21 +204,20 @@ canvas {
 
 footer {
     width: 100%;
+    /* width: 90%; */
+    /* max-width: 1000px; */
     background-color: #00a2ff;
     border-radius: 10px  10px 0 0;
+    margin-top: 16px;
     font-family: "Montserrat-Thin";
-    margin-top: 10px;
+    margin-top: 20px;
 }
 footer img {
-    margin: 10px;
-    width: 100px !important;
-    height: 20px;
+    margin: 15px; 
 }
 
 footer p {
     margin: 15px;
-    color: white;
-    text-shadow: 1px 1px 3px black;
 }
 
 /*----------Box------------*/
@@ -293,7 +289,6 @@ footer p {
     background-color: transparent;
     font-size: 1.5em;
     padding: 10px;
-    color: white;
 }
 
 
@@ -333,12 +328,7 @@ footer p {
 }
 
 @media (max-width: 620px) {
-    .editor {
-        margin: 0;
-        border-radius: unset;
-        box-shadow: unset;
-        background-color: unset;
-    }
+    
     .gallery-images {
         column-count: 2;
         text-align: center;
@@ -347,7 +337,7 @@ footer p {
         max-width: 500px;
     }
     canvas {
-        max-width: 400px;
+        max-width: 500px;
     }
     /* nav {
         display: none;
