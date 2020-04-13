@@ -3,7 +3,6 @@ var gCanvas;
 var gCtx;
 var isDragMode = false;
 var gSavedMemes = loadFromStorage('MEMES');
-var gImgContent;
 
 function onDownloadImg(elLink) {
     clearMark();
@@ -195,13 +194,13 @@ function onSave() {
 
     
     
-    // var imgContent = gCanvas.toDataURL();
-    // console.log('imgContent', imgContent);
+    var img64bit = gCanvas.toDataURL();
+    console.log('imgContent', img64bit);
     
     if (!gSavedMemes) gSavedMemes = [];
     console.log('gSavedMemes', gSavedMemes);
     
-    gSavedMemes.push({ gImgContent, id: makeId(2), meme });
+    gSavedMemes.push({ img64bit, id: makeId(2), meme });
     saveToStorage('MEMES', gSavedMemes);
 }
 
